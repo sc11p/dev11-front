@@ -1,20 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuetify from 'vuetify/lib';
 
-import user from '@/store/modules/user'
-import acts from '@/store/modules/acts'
+Vue.use(Vuetify);
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-  modules: {
-    user,
-    acts
-  },
-
-  state: {},
-
-  mutations: {},
-
-  actions: {}
-})
+export default new Vuetify({
+    theme: {
+        dark: true,
+    },
+});
