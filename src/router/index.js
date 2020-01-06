@@ -2,8 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/auth/Login'
 import Logout from '../views/auth/Logout'
-import Golfers from '../components/Golfers'
-import Outings from '../components/Outings'
+import Acts from '../components/Acts'
 import common from '../common';
 
 Vue.use(VueRouter);
@@ -15,17 +14,9 @@ const routes = [
         component: Login
     },
     {
-        path: '/golfers',
-        name: 'golfers',
-        component: Golfers,
-        meta: {
-            requiresAuth: true
-        }
-    },
-    {
-        path: '/outings',
-        name: 'outings',
-        component: Outings,
+        path: '/acts',
+        name: 'act',
+        component: Acts,
         meta: {
             requiresAuth: true
         }

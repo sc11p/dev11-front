@@ -16,8 +16,8 @@
         <v-spacer/>
 
         <div v-show="this.$store.getters.user !== null">
-            <router-link to="/outings">Outings</router-link>
-            <router-link to="/golfers">Golfers</router-link>
+            
+            <router-link to="/acts">Acts</router-link>
             <Logout/>
         </div>
 

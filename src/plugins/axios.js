@@ -12,7 +12,7 @@ import common from '../common';
 // Full config:  https://github.com/axios/axios#request-config
 axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'http://localhost:80';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 let config = {
     // baseURL: process.env.baseURL || process.env.apiUrl || ""

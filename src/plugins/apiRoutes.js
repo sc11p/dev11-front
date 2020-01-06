@@ -1,8 +1,7 @@
 'use strict';
 
 const ROUTES = {
-    golfers: 'v1/golfers',
-    outings: 'v1/outings',
+    acts: 'v1/acts',
     auth: {
         signIn: 'v1/auth/sign_in',
         signOut: 'v1/auth/sign_out'
@@ -14,8 +13,7 @@ function build(route) {
 }
 
 export default {
-    golfers: build(ROUTES.golfers),
-    outings: build(ROUTES.outings),
+    acts: build(ROUTES.acts),
     signIn: build(ROUTES.auth.signIn),
     signOut: build(ROUTES.auth.signOut)
 }
