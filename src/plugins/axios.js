@@ -10,7 +10,7 @@ import {RESPONSE_HEADERS} from '../constants'
 import common from '../common';
 
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'http://localhost:80';
+axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'http://localhost:3000';
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -66,9 +66,9 @@ Plugin.install = function (Vue) {
     });
 };
 
-export default Plugin;
-
 Vue.use(Plugin);
+
+export default Plugin;
 
 function handleSessionWithCookie(response) {
     // commit the relevant headers to the store, calling mutation 'auth'
@@ -90,9 +90,15 @@ function handleSessionWithCookie(response) {
 
 function handleErrorResponse(error) {
     // defines a callback after any FAILED request
+
     // handles every case when the server responds with a 403 / unauthorized, and will redirect to the login component
     if (router.currentRoute.name !== 'login' && error.response.status === HttpStatus.UNAUTHORIZED) {
         store.commit('setUser', null);
-        router.push('login');
+        router.push('login').catch(err => console.log('error: ' + err));
+    }
+
+    // handles every case when the server responds with a 422 / unprocessable entity, and will update session cookie
+    if (router.currentRoute.name !== 'login' && error.response.status === HttpStatus.UNPROCESSABLE_ENTITY) {
+        handleSessionWithCookie(error.response);
     }
 }

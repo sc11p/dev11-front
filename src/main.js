@@ -6,6 +6,9 @@ import axios from './plugins/axios'
 import vuetify from './plugins/vuetify'
 import VueCookie from 'vue-cookie';
 
+require('./assets/stylesheets/toastr.css');
+require('./assets/stylesheets/vuetify.sass');
+
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
 Vue.use(VueCookie);

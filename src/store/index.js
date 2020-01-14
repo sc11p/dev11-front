@@ -20,6 +20,9 @@ export default new Vuex.Store({
     logoutUser: (state) => {
       state.commit('setAuth', {});
       state.commit('setUser', null);
+    },
+    updateUser: (state, payload) => {
+      state.commit('setUser', payload.data);
     }
   }
 });

@@ -10,7 +10,7 @@
                     width="40"
             />
 
-            <div class="display-1">Golf Hacker Club</div>
+            <div class="display-1">RDB</div>
         </div>
 
         <v-spacer/>

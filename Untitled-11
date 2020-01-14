@@ -1,0 +1,18 @@
+<script>
+  import apiRoutes from "../plugins/apiRoutes";
+  export default {
+      data() {
+          return {
+            headers: [
+            { text: 'ids' },
+            { text: 'data' },
+            ],
+            listItems: null
+          }
+      },
+            mounted() {
+                this.$axios.get(apiRoutes.acts).then(response => this.listItems = response.data);
+            }
+          }
+
+</script>
