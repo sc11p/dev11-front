@@ -1,28 +1,20 @@
 <template>
-  <v-app-bar 
-    app
-    dark
-    color="indigo darken-2"
-  >
-    <div class="display-1">RDB</div>
+  <v-app-bar app dark>
+    <v-toolbar-title>RDB</v-toolbar-title>
+    <div class="flex-grow-1"></div>
     <v-spacer />
+    
+    <v-toolbar-items v-show="this.$store.getters.user !== null">
 
-    <div v-show="this.$store.getters.user !== null">
-      <router-link to="/acts">Acts</router-link>
-      <Logout />
-    </div>
+      <v-btn to="/acts">Acts</v-btn>
+      <v-btn to="/logout">Logout</v-btn>
+
+    </v-toolbar-items>
+
   </v-app-bar>
 </template>
 
 <script>
-import Logout from "../../views/auth/Logout";
-
-export default {
-  name: "Nav",
-  components: {
-    Logout
-  }
-};
 </script>
 
 <style scoped>
