@@ -7,23 +7,23 @@
                     :search="search"
                     sort-by="last_name"
                     class="elevation-1"
-                    light
+                    dark
             >
                 <template v-slot:top>
                     <v-toolbar flat>
                         <v-toolbar-title>acts</v-toolbar-title>
                         <v-spacer/>
                         <v-text-field
-                                v-model="search"
-                                append-icon="search"
-                                label="Search"
-                                single-line
-                                hide-details
+                            v-model="search"
+                            append-icon="mdi-magnify"
+                            label="Search"
+                            single-line
+                            hide-details
                         />
                         <v-spacer/>
-                        <v-dialog v-model="dialog" max-width="500px" persistent>
+                        <v-dialog v-model="dialog" max-width="700px" persistent>
                             <template v-slot:activator="{ on }">
-                                <v-btn color="primary" dark class="mb-2" v-on="on">New Act</v-btn>
+                                <v-btn color="primary" dark class="mb-2" v-on="on">New ACT</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>
@@ -102,7 +102,7 @@
         <v-dialog v-model="dialogDelete" max-width="350px">
             <v-card>
                 <v-card-title class="headline">
-                    Delete this golfer?
+                    Delete this act?
                 </v-card-title>
 
                 <v-card-actions>
@@ -140,14 +140,17 @@
                 dialogDelete: false,
                 search: '',
                 headers: [
-                    {text: 'First Name', value: 'id'},
-                    {text: 'Last Name', value: 'date'},
-                    {text: 'Nickname', value: 'customer.name'},
-                    {text: 'Email', value: 'email'},
-                    {text: 'Phone', value: 'phone'},
-                    {text: 'Active?', value: 'is_active'},
-                    {text: 'Registered?', value: 'is_registered'},
-                    {text: 'Board Member?', value: 'is_board_member'},
+                    {text: '#', value: 'id'},
+                    {text: 'Экспертиза', value: 'nexp'},
+                    {text: 'Акт', value: 'nact'},
+                    {text: 'Специалист', value: 'specialist.name'},
+                    {text: 'Эксперт', value: 'expert.name'},
+                    {text: 'Дата акта', value: 'date'},
+                    {text: 'Отделение', value: 'city.name'},
+                    {text: 'ТС', value: 'ts_mark'},
+                    {text: 'ТС', value: 'ts_model'},
+                    {text: 'ТС', value: 'ts_number'},
+                    {text: 'Заказчик', value: 'customer.name'},
                     {text: 'Actions', value: 'action', sortable: false},
                 ],
                 editedIndex: -1,
@@ -173,14 +176,14 @@
             }
         },
         methods: {
-            editItem(golfer) {
-                this.editedIndex = this.acts.indexOf(golfer);
-                this.editedItem = Object.assign({}, golfer);
+            editItem(act) {
+                this.editedIndex = this.acts.indexOf(act);
+                this.editedItem = Object.assign({}, act);
                 this.dialog = true;
             },
-            openDeleteDialog(golfer) {
-                this.editedIndex = this.acts.indexOf(golfer);
-                this.editedItem = Object.assign({}, golfer);
+            openDeleteDialog(act) {
+                this.editedIndex = this.acts.indexOf(act);
+                this.editedItem = Object.assign({}, act);
                 this.dialogDelete = true;
             },
             close() {
@@ -207,7 +210,7 @@
                     this.close();
                     notifier.success('Act created successfully')
                 }).catch(() => {
-                    notifier.error('Error occurred while creating golfer');
+                    notifier.error('Error occurred while creating act');
                 });
             },
             updateAct() {
@@ -224,7 +227,7 @@
                     this.close();
                     notifier.success('Act updated successfully')
                 }).catch(() => {
-                    notifier.error('Error occurred while updating golfer');
+                    notifier.error('Error occurred while updating act');
                 });
             },
             deleteAct() {
@@ -234,7 +237,7 @@
                         notifier.success('Act deleted successfully')
                     })
                     .catch(() => {
-                        notifier.error('Error occurred while deleting golfer');
+                        notifier.error('Error occurred while deleting act');
                     });
                 this.dialogDelete = false;
                 this.close();

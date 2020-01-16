@@ -1,16 +1,66 @@
 <template>
-    <div>
-        <form @submit.prevent="login">
-            <h1>Login</h1>
-            <label>Email</label>
-            <input required v-model="email" type="email"/>
-            <label>Password</label>
-            <input required v-model="password" type="password"/>
-            <hr/>
-            <button type="submit">Login</button>
-        </form>
+      <v-container
+        class="fill-height"
+        fluid
+      >
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <v-col
+            cols="12"
+            sm="8"
+            md="4"
+          >
+            <v-card class="elevation-12">
+              <v-toolbar
+                dark
+                flat
+              >
+                <v-toolbar-title>Login form</v-toolbar-title>
+                <div class="flex-grow-1"></div>
+                <v-tooltip bottom>
+                </v-tooltip>
+              </v-toolbar>
+              <v-card-text>
 
-    </div>
+                <v-form>
+                  <!-- text field login -->
+                  <v-text-field
+                    label="Login"
+                    name="login"
+                    type="text"
+                    v-model="email"
+                  ></v-text-field>
+
+                  <!-- text field password -->
+                  <v-text-field
+                    label="Password"
+                    name="password"
+                    type="password"
+                    v-model="password"
+                  ></v-text-field>
+                </v-form>
+
+              </v-card-text>
+
+              <v-card-actions>
+                <div class="flex-grow-1"></div>
+                <v-btn color="primary"
+                @click="login"
+                >Login</v-btn>
+                <v-btn
+                  color="error"
+                  @click="resetForm"
+                  class="reset">
+                  Reset Form
+                </v-btn>
+              </v-card-actions>
+
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
 </template>
 
 <script>
@@ -29,6 +79,10 @@
             }
         },
         methods: {
+            resetForm () {
+                this.email = ''
+                this.password = ''
+                },
             login() {
                 this.$axios.post(apiRoutes.signIn, {
                     email: this.email, password: this.password
